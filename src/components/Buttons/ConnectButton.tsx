@@ -4,11 +4,13 @@ import { toast } from 'react-toastify';
 import { bscTestnet } from 'viem/chains';
 import { injected, useAccount, useConnect, useDisconnect } from 'wagmi';
 import ErrorExeTransaction from '../Common/ErrorExeTransaction/ErrorExeTransaction';
+import { useToggleThemeMode } from 'src/jotai/theme/hooks';
 
 const ConnectButton = () => {
   const { connectAsync } = useConnect();
   const { address } = useAccount();
   const { disconnectAsync } = useDisconnect();
+  const toggleTheme = useToggleThemeMode();
 
   const handleConnectAccount = async () => {
     try {
@@ -45,6 +47,9 @@ const ConnectButton = () => {
           Connect wallet
         </Button>
       )}
+      <Button onClick={toggleTheme} variant="outlined" sx={{ mt: 2 }}>
+        Change theme
+      </Button>
     </>
   );
 };
