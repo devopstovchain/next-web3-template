@@ -39,19 +39,10 @@ The actual source files of a project are stored inside the
     ├── services    # Handle API stuff (Nextjs prefer use fetch for fetching data)
     ├── theme       # Custom theme for MUI
     ├── utils       # Store util function
+    ├── constant    # Store constant variable
     └── middleware  # Middleware of nextjs can modify the response by rewriting, redirecting, .etc
 
 > Use short lowercase names at least for the top-level files and folders except `README.md`
-
-## 3rd party libraries
-
-Below is a list of libraries used in this base. If you are not familiar with the different technologies used in this base, please refer to the respective docs.
-
-- [Next.js](https://nextjs.org)
-- [Wagmi](https://wagmi.sh/react/installation)
-- [Jotai](https://jotai.org/docs)
-- [date-fns](https://date-fns.org/docs/Getting-Started)
-- [material-ui](https://mui.com/material-ui/getting-started/usage/)
 
 ## Public folder
 
@@ -97,3 +88,13 @@ Search and change these following keys:
   content="Orchai, lend, borrow, crypto, lowcode defi, Oraichain, Blockchain, marketplace, loans, best profit, AI, Lending Platform, ecosystem, AI Oracle."
 />
 ```
+
+## 3rd party libraries
+
+Below is a list of libraries used in this base. If you are not familiar with the different technologies used in this base, please refer to the respective docs.
+
+- [Next.js](https://nextjs.org)
+- [Wagmi](https://wagmi.sh/react/installation)
+- [Jotai](https://jotai.org/docs)
+- [date-fns](https://date-fns.org/docs/Getting-Started)
+- [material-ui](https://mui.com/material-ui/getting-started/usage/)
