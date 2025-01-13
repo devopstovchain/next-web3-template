@@ -1,28 +1,18 @@
 'use client';
 import { Button, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { bscTestnet } from 'viem/chains';
-import { injected, useAccount, useConnect, useDisconnect } from 'wagmi';
-import ErrorExeTransaction from '../Common/ErrorExeTransaction/ErrorExeTransaction';
 import { useToggleThemeMode } from 'src/jotai/theme/hooks';
+import { useAccount, useDisconnect } from 'wagmi';
+import ErrorExeTransaction from '../Common/ErrorExeTransaction/ErrorExeTransaction';
+import ConnectWalletModal from '../Modals/ConnectWalletModal/ConnectWalletModal';
 
 const ConnectButton = () => {
-  const { connectAsync } = useConnect();
   const { address } = useAccount();
   const { disconnectAsync } = useDisconnect();
   const toggleTheme = useToggleThemeMode();
 
-  const handleConnectAccount = async () => {
-    try {
-      await connectAsync({
-        chainId: bscTestnet.id,
-        connector: injected(),
-      });
-    } catch (error) {
-      console.log('🚀 ~ handleConnectAccount ~ error:', error);
-      toast.error(<ErrorExeTransaction error={error} />);
-    }
-  };
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleDisconnect = async () => {
     try {
@@ -37,19 +27,23 @@ const ConnectButton = () => {
     <>
       {address ? (
         <Stack>
-          <Typography variant="body1">{address}</Typography>
+          <Typography variant="body1" mb={1}>
+            {address}
+          </Typography>
           <Button onClick={handleDisconnect} variant="outlined">
             Disconnect
           </Button>
         </Stack>
       ) : (
-        <Button onClick={handleConnectAccount} variant="outlined">
+        <Button onClick={() => setOpenDialog(true)} variant="outlined">
           Connect wallet
         </Button>
       )}
       <Button onClick={toggleTheme} variant="outlined" sx={{ mt: 2 }}>
         Change theme
       </Button>
+
+      <ConnectWalletModal open={openDialog} onClose={() => setOpenDialog(false)} />
     </>
   );
 };

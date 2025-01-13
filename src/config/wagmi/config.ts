@@ -2,13 +2,24 @@ import { IconArbitrum, IconBNB, SvgComponent } from 'src/assets/icons';
 import { createClient } from 'viem';
 import { createConfig, http } from 'wagmi';
 import { bscTestnet } from 'wagmi/chains';
-import { injected } from 'wagmi/connectors';
+import { injected, walletConnect } from 'wagmi/connectors';
 import { customArbitrum, customArbitrumSepolia } from './customChains';
 import { TAppChainId } from './type';
 
 export const configEvmChain = createConfig({
   chains: [customArbitrum, customArbitrumSepolia, bscTestnet],
-  connectors: [injected({ target: 'metaMask' })],
+  connectors: [
+    injected({ target: 'metaMask' }),
+    walletConnect({
+      projectId: 'c2a094b71f851b489769f266d0b889ef',
+      showQrModal: true,
+      qrModalOptions: {
+        themeVariables: {
+          '--wcm-z-index': '1400',
+        },
+      },
+    }),
+  ],
   client({ chain }) {
     return createClient({ chain, transport: http() });
   },
@@ -36,7 +47,13 @@ export const infoChain: {
     url: customArbitrumSepolia.blockExplorers.default.url,
   },
 };
+
 export const infoWallet: { [k in string]: { logoWallet: string; name: string; url: string } } = {
   // ! only write id wallet allow for connect on web
   ['metaMask']: { logoWallet: '/images/wallet/MetaMaskLogo.png', name: 'Metamask', url: 'https://metamask.io' },
+  ['walletConnect']: {
+    logoWallet: '/images/wallet/WalletConnectLogo.png',
+    name: 'WalletConnect',
+    url: 'https://explorer.walletconnect.com',
+  },
 };
