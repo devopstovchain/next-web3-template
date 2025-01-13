@@ -62,29 +62,41 @@ Search and change these following keys:
 
 **`SITE_URL`** ⇒ link web of production
 
-```html
-<meta property="og:url" content="SITE_URL" />
+```ts
+metadata = { metadataBase: new URL(SITE_URL) };
 ```
 
 **`SITE_TITLE`** ⇒ title of app (ex: Orchai, Centic, Thorn, ....)
 
-```html
-<meta property="og:title" content="SITE_TITLE" /> <title>SITE_TITLE</title>
+```ts
+metadata = { title: SITE_TITLE };
 ```
 
 **`SITE_DESCRIPTION`** ⇒ description of app
+
+```ts
+metadata = { description: SITE_DESCRIPTION };
+```
 
 **`SITE_THUMBNAIL_WIDTH`** ⇒ width of thumbnail image (in pixel unit) (ex: 6251)
 
 **`SITE_THUMBNAIL_HEIGHT`** ⇒ height of thumbnail image (in pixel unit) (ex: 2084)
 
+```ts
+metadata = {
+  twitter: {
+    images: {
+      width: SITE_THUMBNAIL_HEIGHT,
+      height: SITE_THUMBNAIL_HEIGHT,
+    },
+  },
+};
+```
+
 **`KEYWORD`** => for gg search, list keys words relative with project
 
-```html
-<meta
-  name="keywords"
-  content="Orchai, lend, borrow, crypto, lowcode defi, Oraichain, Blockchain, marketplace, loans, best profit, AI, Lending Platform, ecosystem, AI Oracle."
-/>
+```ts
+metadata = { keywords: KEYWORD };
 ```
 
 ## 3rd party libraries
