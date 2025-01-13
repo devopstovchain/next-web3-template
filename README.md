@@ -74,8 +74,6 @@ Search and change these following keys:
 
 **`SITE_DESCRIPTION`** ⇒ description of app
 
-**`LINK_FONT_FAMILY_OF_APP`** ⇒ link font family of app (ex: https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap)
-
 **`SITE_THUMBNAIL_WIDTH`** ⇒ width of thumbnail image (in pixel unit) (ex: 6251)
 
 **`SITE_THUMBNAIL_HEIGHT`** ⇒ height of thumbnail image (in pixel unit) (ex: 2084)
